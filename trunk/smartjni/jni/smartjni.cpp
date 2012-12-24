@@ -13,6 +13,7 @@ using namespace smart_jni;
 
 JNIEnv* getJNIEnv(){
 	return AndroidRuntime::getJNIEnv();
+//	return NULL;
 }
 
 extern "C" {
