@@ -49,6 +49,16 @@ Class::Class(const jclass claxx){
 	mClass = (jclass)smart_jnienv->NewGlobalRef(claxx);
 }
 
+Class::Class(const Class& claxx){
+	mClass = (jclass)smart_jnienv->NewGlobalRef(claxx.mClass);
+}
+
+
+bool Class::isAssignableFrom(const Class& claxx){
+	jboolean b = smart_jnienv->IsAssignableFrom(mClass, claxx.mClass);
+	return b == JNI_TRUE;
+}
+
 Class::~Class(){
 	if(mClass != NULL){
 		smart_jnienv->DeleteGlobalRef(mClass);
