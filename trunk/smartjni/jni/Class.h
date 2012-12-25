@@ -25,6 +25,7 @@ protected:
 
 	Class(const char* name);
 	Class(const jclass claxx);
+	Class(const Class& claxx);
 
 	static char* trans2JNIName(const char* name);
 	static jclass trans2Primitive(const jclass claxx);
@@ -49,6 +50,11 @@ public:
 	 * 获取jclass对象
 	 */
 	const jclass getJNIClass();
+
+	/**
+	 *  checking self is assignable from the claxx
+	 */
+	bool isAssignableFrom(const Class& claxx);
 
 	/**
 	 * 析构

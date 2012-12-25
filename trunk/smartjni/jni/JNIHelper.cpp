@@ -25,5 +25,19 @@ inline jmethodID JNIHelper::findMethod(bool isstatic, const jclass claxx, const 
 	return isstatic ? smart_jnienv->GetStaticMethodID(claxx, methodname, methodsigner) : smart_jnienv->GetMethodID(claxx, methodname, methodsigner);
 }
 
+bool JNIHelper::isAssignableFrom(const jobject obj, const char* classname){
+	jclass claxx = smart_jnienv->FindClass(classname);
+	bool result = isAssignableFrom(obj, claxx);
+	smart_jnienv->DeleteLocalRef(claxx);
+	return result;
+}
+
+inline bool JNIHelper::isAssignableFrom(const jobject obj, const jclass claxx){
+	jclass obj_claxx = smart_jnienv->GetObjectClass(obj);
+	jboolean b = smart_jnienv->IsAssignableFrom(obj_claxx, claxx);
+	smart_jnienv->DeleteLocalRef(obj_claxx);
+	return b == JNI_TRUE;
+}
+
 }
 

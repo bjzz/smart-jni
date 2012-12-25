@@ -47,9 +47,9 @@ void Java_com_demo_smartjni_MainActivity_nativemethod(JNIEnv *env, jobject thiz)
 
 	//静态非原始字段调用
 	Field* field3 = claxx->getField("mValue3");
-	Log_i("TTT", "intret3 is %d", Jint::valueOf(field3->get(NULL)));
+	Log_i("TTT", "intret3 is %d", Integer::intValue(field3->get(NULL)));
 	field3->set(NULL, Integer::valueOf(56));
-	Log_i("TTT", "intret3 is %d", Jint::valueOf(field3->get(NULL)));
+	Log_i("TTT", "intret3 is %d", Integer::intValue(field3->get(NULL)));
 	delete field3;
 
 	delete claxx;

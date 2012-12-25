@@ -20,6 +20,7 @@ class Integer : public Class{
 
 private:
 	static jmethodID s_Integer_init_ID;
+	static jmethodID s_Integer_intValue_ID;
 	static Integer* sInstance;
 
 	Integer();
@@ -30,6 +31,7 @@ public:
 	 * jint -> Integer ×ª»»
 	 */
 	static jobject valueOf(jint value);
+	static jint intValue(jobject value);
 	static const Integer* type();
 	virtual ~Integer();
 };
@@ -45,7 +47,6 @@ private:
 
 public:
 	static const Jint* type();
-	static jint valueOf(jobject value);
 	virtual ~Jint();
 
 };
@@ -54,6 +55,7 @@ class Long : public Class{
 
 private:
 	static jmethodID s_Long_init_ID;
+	static jmethodID s_Long_longValue_ID;
 	static Long* sInstance;
 
 	Long();
@@ -64,6 +66,7 @@ public:
 	 * jlong -> Long ×ª»»
 	 */
 	static jobject valueOf(jlong value);
+	static jlong longValue(jobject value);
 	static const Long* type();
 	virtual ~Long();
 };
@@ -76,7 +79,6 @@ private:
 
 public:
 	static const Jlong* type();
-	static jlong valueOf(jobject value);
 	virtual ~Jlong();
 
 };
